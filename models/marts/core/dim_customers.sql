@@ -69,4 +69,3 @@ select
 from unique_customers_geo geo
 left join customer_aggregates agg 
     on geo.customer_unique_id = agg.customer_unique_id
-) 
