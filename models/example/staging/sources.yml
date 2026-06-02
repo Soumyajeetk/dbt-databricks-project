@@ -12,3 +12,4 @@ sources:
       - name: olist_products
       - name: olist_sellers
       - name: product_category_name_translation
+      - name: olist_geolocation
