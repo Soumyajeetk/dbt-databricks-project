@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_order_items
+    description: "The primary fact table for logistics tracking. One row per item per order."
+    columns:
+      - name: order_item_key
+        description: "Primary key generated via MD5 hash."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_unique_id
+        description: "The unique identifier of the physical customer. Foreign key linking back to dim_customers."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_unique_id
