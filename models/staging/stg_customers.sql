@@ -4,9 +4,12 @@ WITH customers AS (
 )
 
 SELECT 
-    customer_id,
-    customer_unique_id,
-    customer_zip_code_prefix,
-    customer_city,
-    customer_state
+    -- Identifiers
+    customer_id,          -- Maps 1:1 to the individual order
+    customer_unique_id,   -- Tracks the actual individual customer across multiple lifetime orders
+
+    -- Geography (Standardized text formatting)
+    customer_zip_code_prefix as zip_code_prefix,
+    initcap(customer_city) as city,
+    upper(customer_state) as state
 FROM customers 
