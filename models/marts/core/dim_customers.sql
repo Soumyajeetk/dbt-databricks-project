@@ -41,7 +41,7 @@ customer_aggregates as (
     from customer_orders
     group by 1
 )
-select * from (
+
 
 select
     -- 1. Unique Primary Key (Grain: One row per unique customer identity)
@@ -69,4 +69,4 @@ select
 from unique_customers_geo geo
 left join customer_aggregates agg 
     on geo.customer_unique_id = agg.customer_unique_id
-) where total_lifetime_orders >5
+) 
