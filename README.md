@@ -34,7 +34,7 @@ The repository enforces a strict multi-layer dbt architecture to isolate raw dat
     └── 📂 logistics/
         ├── fct_order_items.sql    # Central Fact Table: Granular item-level logistics performance grain
         └── schema.yml             # Automated data quality schema definitions and referential integrity tests
-
+```
 ---
 ## 📊 Core Business Use Case: Logistics & Delivery Diagnostic Engine
 Rather than hosting passive metrics, this pipeline calculates advanced, actionable operational benchmarks across the order lifecycle:
@@ -85,6 +85,7 @@ Note: The dbt build command compiles the models, deploys them to the Databricks 
 - Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
 
 ## 👤 Author & Connect
 * **Name:** Soumyajeet Kundu
