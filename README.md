@@ -60,22 +60,22 @@ The semantic layer is engineered with clean separation of concerns, enforcing un
 *Click the headers below to expand and view the high-resolution operational dashboards.*
 
 <details>
-<summary><b>📐 Page 1: Cancellation Diagnostics (Standard View)</b></summary>
-<br>
-<img src="images/olist_page1_logistics.png" width="100%" alt="Cancellation Diagnostics Dashboard">
+<summary><b>🚚 Page 1: Fulfillment & Logistics Performance</b></summary>
+<br> 
+<img src="images/olist_page1_logistics.png" width="100%" alt="Logistics Performance Dashboard">
 </details>
 
 <details>
-<summary><b>💡 Page 1: Cancellation Diagnostics (With Active Glossary Pop-Up)</b></summary>
+<summary><b>📐 Page 2: Cancellation Diagnostics (Standard View)</b></summary>
 <br>
-<img src="images/olist_page1_glossary.png" width="100%" alt="Cancellation Diagnostics with Info Modal">
+<img src="images/olist_page2_cancellation.png" width="100%" alt="Cancellation Diagnostics Dashboard">
+</details>
+
+<details>
+<summary><b>💡 Page 2: Cancellation Diagnostics (With Active Glossary Pop-Up)</b></summary>
+<br>
+<img src="images/olist_page2_glossary.png" width="100%" alt="Cancellation Diagnostics with Info Modal">
 <p><i>Note: Custom modal state-protected via bookmarking to ensure filter continuity.</i></p>
-</details>
-
-<details>
-<summary><b>🚚 Page 2: Fulfillment & Logistics Performance</b></summary>
-<br>
-<img src="images/olist_page2_cancellation.png" width="100%" alt="Logistics Performance Dashboard">
 </details>
 
 ---
