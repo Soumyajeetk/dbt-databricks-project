@@ -79,15 +79,7 @@ The semantic layer is engineered with clean separation of concerns, enforcing un
   * *Revenue Loss & Volatility by Product Category* (Horizontal Bar) – Pinpoints inventory-specific risks, highlighting vulnerable high-ticket sectors like *Cool Stuff* and *Sports Leisure*.
 
 ---
-
-## ✅ Current Progress
-- Completed: Automated staging layers configured with explicit 1/0 schema flags for seamless, lightweight boolean aggregations in downstream visualization layers.
-- Completed: Advanced analytical features generated at the customer scale using analytical window logic bounded to track historical behavior up to 1 preceding row.
-- Completed: Star Schema finalized with explicit Primary Key/Foreign Key tracking between the logistics and core analytical marts.
-- Completed: Automated schema validation engines applied using YAML constraints to enforce relational integrity and absolute column uniqueness.
-
----
-✅ Completed Milestones
+## ✅ Completed Milestones
 
 - Automated Staging Layers: Configured with explicit 1/0 schema flags for seamless, lightweight boolean aggregations.
 
