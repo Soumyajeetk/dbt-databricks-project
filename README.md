@@ -1,7 +1,7 @@
 # Olist Logistics Analytics Engine (dbt Cloud & Databricks)
 
 ## 📌 Project Overview
-This project builds a robust, enterprise-grade Analytics Engineering pipeline transforming raw e-commerce data into a high-performance star schema layout. The core objective is diagnosing supply chain friction, carrier bottlenecks, and customer churn drivers for a large-scale Brazilian e-commerce ecosystem.
+This project builds a robust, enterprise-grade Analytics Engineering pipeline transforming raw e-commerce data into a high-performance star schema layout. The primary business objective of this pipeline is to diagnose multi-point operational friction across the supply chain, identify geographic freight bottlenecks, and isolate the upstream drivers of customer order cancellations. By transforming raw source tables into a refined star schema, this engine empowers operational stakeholders to pivot from passive historical reporting to proactive revenue protection and logistics optimization.
 
 ### Modern Data Stack:
 * **Data Lakehouse:** Databricks (Compute, Storage, & Delta Catalog)
@@ -36,16 +36,47 @@ The repository enforces a strict multi-layer dbt architecture to isolate raw dat
         └── schema.yml             # Automated data quality schema definitions and referential integrity tests
 ```
 ---
-## 📊 Core Business Use Case: Logistics & Delivery Diagnostic Engine
-Rather than hosting passive metrics, this pipeline calculates advanced, actionable operational benchmarks across the order lifecycle:
+## ## 📊 Business Intelligence & UI/UX Architecture
 
-Approval Efficiency: approval_delay_hours tracks data processing or payment friction before warehouse hand-off.
+The downstream Power BI reporting tier delivers a highly polished, interactive corporate performance suite. The dashboard relies on a clean, dark-themed presentation layer sitting on top of a strictly modeled, high-performance dimensional star schema.
 
-Dispatch Speed: dispatch_delay_days measures warehouse operational velocity against fulfillment deadlines.
+### 🗄️ Dimensional Data Modeling & DAX Architecture
+The semantic layer is engineered with clean separation of concerns, enforcing unidirectional 1-to-Many ($1 \rightarrow *$) relationship rails extending from decoupled master data dimensions into a central, low-grain transactional fact table:
+* **Central Fact Table:** `fct_orders_items` (captures granular item-level fulfillment, revenue, and logistics data).
+* **Dimension Tables:** Explicitly structured filtering contexts for comprehensive business analysis:
+  * `dim_customers` – Encapsulates customer hashes, geographical entities, and lifetime behavior tracking.
+  * `dim_payments` – Maps transactional payment preferences and gateway types.
+  * `dim_products` – Segments the vast e-commerce SKU library into localized product categories.
+  * `dim_sellers` – Isolates vendor performance and geographic distribution networks.
+* **DAX Governance:** All explicit calculation logic—including time-to-delivery deltas, SLA percentages, and financial risk values—is consolidated inside a dedicated, isolated folder (`_measures`) to maintain enterprise-grade file cleanliness and discoverability.
 
-Delivery SLA Compliance: delivery_accuracy_flag evaluates downstream carrier reliability by measuring actual arrivals against estimated promises.
+### 💡 Advanced Portfolio UI/UX Implementations
+* **Dynamic Navigation Mechanics:** Features a native, low-friction **Page Navigation** header framework (e.g., the custom `CD&RRA` navigation index) that provides seamless, app-like page traversal for business users.
+* **State-Protected Glossary Pop-Up Overlays:** Formatted custom information modals using a combination of the **Selection Pane** and **Action-driven Bookmarks**. Crucially, the underlying bookmarks are configured to explicitly ignore the *Data State*—ensuring that stakeholders can pop open structural terminology panels without clearing out active slicers, time parameters, or regional filters.
 
-Advanced Root-Cause Churn Profiling: Utilizes backward-looking window functions (prior_lifetime_late_deliveries, prior_lifetime_cancellations) to statistically isolate if specific late carrier hand-offs or prolonged approval delays directly cause customer order cancellations.
+---
+### 📄 Page 1: Fulfillment & Logistics Performance
+* **Core Focus:** Evaluating supply chain throughput, carrier transit speed, and geographical freight logjams.
+* **KPI Trackers:**
+  * *On-Time Delivery %* – Core benchmark mapping carrier reliability against customer commitments.
+  * *Avg Dispatch Speed* – Internal warehouse operational velocity and packing turnaround.
+  * *Avg Transit Time* – Downstream freight distribution velocity.
+  * *Cancellation Rate %* – Tracks mid-transit customer order cancellations.
+  * *Orders in Pipeline* – Measures real-time operational backlog currently inside active logistics pipelines.
+* **Analytical Visuals:**
+  * *The Operational Impact of Delivery SLA Compliance on Order Cancellations* (Dual-Axis Trend) – Correlates historic courier delivery dips directly to spikes in customer cancellation rates over time.
+  * *Fulfillment Bottlenecks: Dispatch vs. Transit Time* (Stacked Bar by State) – Isolates state-by-state supply chain bottlenecks, revealing immense geographical delivery lags (such as the severe transit anomalies visible in Amazonas/AM) to optimize freight routing.
+
+### 📄 Page 2: Cancellation Diagnostics & Revenue Risk Analysis
+* **Core Focus:** Quantifying transaction drops, platform checkout friction, and gross financial leakage.
+* **KPI Trackers:**
+  * *Cancelled Orders* – Tracks absolute transactional abandonment.
+  * *Lost Revenue* – Quantifies the gross merchandise value forfeited due to process failure.
+  * *Avg Canceled Freight* – Measures sunk logistics costs generated prior to termination.
+  * *Boleto Drop-off Rate %* – Tracks consumer abandonment tied to cash-flow invoice timelines.
+* **Analytical Visuals:**
+  * *Cancellation Distribution by Payment Method* (Donut Chart) – Isolates gateway technical friction and fraud-filter trip points across payment rails.
+  * *Revenue Loss & Volatility by Product Category* (Horizontal Bar) – Pinpoints inventory-specific risks, highlighting vulnerable high-ticket sectors like *Cool Stuff* and *Sports Leisure*.
 
 ---
 
@@ -56,11 +87,27 @@ Advanced Root-Cause Churn Profiling: Utilizes backward-looking window functions 
 - Completed: Automated schema validation engines applied using YAML constraints to enforce relational integrity and absolute column uniqueness.
 
 ---
+✅ Completed Milestones
+
+- Automated Staging Layers: Configured with explicit 1/0 schema flags for seamless, lightweight boolean aggregations.
+
+- Advanced Analytical Features: Bounded window logic to capture historical behavior up to 1 preceding row at the customer scale.
+
+- Star Schema Finalization: Enforced strict Primary/Foreign Key tracking between logistics and core analytical marts.
+
+- Automated Quality Testing: Applied YAML constraints to enforce relational integrity and absolute column uniqueness.
+
+- Front-End UX & BI Delivery: Connected Databricks production views directly to Power BI, delivering fully styled, interactive, bookmark-driven operational dashboards.
+
+---
 
 ## 🚀 Next Steps
-- Import the generated Databricks production views directly into Power BI.
-- Model a 1-to-Many unidirectional relationship across dim_customers and fct_order_items.
-- Construct core visual reporting sheets: a Logistics Performance Overview dashboard and an Operational Friction/Root-Cause Analysis dashboard.
+
+- Implement incremental loading configurations in dbt for high-velocity delta streams.
+
+- Configure a dbt Semantic Layer to enable self-service ad-hoc reporting for operational stakeholders.
+
+- Set up a unified CI/CD deployment pipeline using GitHub Actions to trigger automated dbt build sequences upon pull request merges.
 
 ---
 
