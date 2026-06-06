@@ -1,0 +1,40 @@
+table dim_sellers
+	lineageTag: 40d6fa6d-6c94-4d8e-8090-7e11bc5dede3
+
+	column seller_id
+		dataType: string
+		lineageTag: 32519bf8-9292-45fd-8ce8-60374dee548a
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_city
+		dataType: string
+		lineageTag: fd10bf90-ff74-4d89-b630-c728df0165ae
+		summarizeBy: none
+		sourceColumn: seller_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_state
+		dataType: string
+		lineageTag: 86856f6e-fda7-4f8c-9495-54650caaa258
+		summarizeBy: none
+		sourceColumn: seller_state
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_sellers = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-c79abe70-2381.cloud.databricks.com", "/sql/1.0/warehouses/81a6a78ee4298ebc", null),
+				    workspace_Database = Source{[Name="workspace",Kind="Database"]}[Data],
+				    dbt_skundu_Schema = workspace_Database{[Name="dbt_skundu",Kind="Schema"]}[Data],
+				    dim_sellers_View = dbt_skundu_Schema{[Name="dim_sellers",Kind="View"]}[Data]
+				in
+				    dim_sellers_View
+
+	annotation PBI_ResultType = Table
+

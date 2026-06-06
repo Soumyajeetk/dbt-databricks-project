@@ -1,0 +1,28 @@
+relationship 0961e516-d2a4-493d-a6a5-19e75a5d03f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_orders_items.purchased_at
+	toColumn: LocalDateTable_53310962-a5b2-4561-9a55-cd4cd71dc285.Date
+
+relationship a60b4cfa-0844-4ba6-8c64-3f78105aa948
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_orders_items.shipping_limit_at
+	toColumn: LocalDateTable_b0611741-a159-4415-8d7b-266d6668169b.Date
+
+relationship AutoDetected_9c9402ac-2bcc-4191-b9b8-275e8228e2fa
+	fromColumn: fct_orders_items.customer_unique_id
+	toColumn: dim_customers.customer_unique_id
+
+relationship AutoDetected_b1995f8f-fa33-4e24-a338-c533739acde3
+	fromColumn: fct_orders_items.seller_id
+	toColumn: dim_sellers.seller_id
+
+relationship c7267a71-b0d0-479c-2e41-121237d25372
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: dim_payments.order_id
+	toColumn: fct_orders_items.order_id
+
+relationship AutoDetected_16b2a5b9-0102-4fc4-b68d-82d321012af8
+	fromColumn: fct_orders_items.product_id
+	toColumn: dim_products.product_id
+

@@ -1,0 +1,115 @@
+table dim_customers
+	lineageTag: 2ff82e68-b6a4-4e29-aeba-c1d6d8bb8f60
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 42d25130-f5fa-4263-9f2a-7c7c980fa1b4
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: d97af2f6-337c-42c3-82f4-b9dd54d500b6
+		summarizeBy: none
+		sourceColumn: zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 83ab5bff-1b42-4b69-a59b-122c0b8daab1
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: c5d0f945-f3a7-433f-935b-9721d51b918b
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lifetime_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ea83767-d363-46b8-b459-75be9e61ddd3
+		summarizeBy: none
+		sourceColumn: total_lifetime_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lifetime_cancellations
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ffb02d0-4798-4b00-8800-cb22fea74b4f
+		summarizeBy: none
+		sourceColumn: total_lifetime_cancellations
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_lifetime_approval_delay_hours
+		dataType: double
+		lineageTag: 79b5ced3-54ab-444a-805b-9de203430bab
+		summarizeBy: none
+		sourceColumn: avg_lifetime_approval_delay_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_lifetime_dispatch_delay_days
+		dataType: double
+		lineageTag: 964bb05c-dae6-476a-b3bf-310183af3ffb
+		summarizeBy: none
+		sourceColumn: avg_lifetime_dispatch_delay_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_lifetime_delivery_time_days
+		dataType: double
+		lineageTag: d3f4beb4-16e6-4039-ae33-598e989c00ca
+		summarizeBy: none
+		sourceColumn: avg_lifetime_delivery_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lifetime_delivery_sla_compliance_rate
+		dataType: double
+		lineageTag: 680d491a-601d-4398-9a1e-01d39f21fd7d
+		summarizeBy: none
+		sourceColumn: lifetime_delivery_sla_compliance_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_loyalty_segment
+		dataType: string
+		lineageTag: 5f544766-8d69-486b-af51-d69fcb4ed658
+		summarizeBy: none
+		sourceColumn: customer_loyalty_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customers = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-c79abe70-2381.cloud.databricks.com", "/sql/1.0/warehouses/81a6a78ee4298ebc", [Catalog="workspace", Database="dbt_skundu", QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    dim_customers_dbt_skundu_workspace_View = Source{[Item="dim_customers",Schema="dbt_skundu",Catalog="workspace",Kind="View"]}[Data]
+				in
+				    dim_customers_dbt_skundu_workspace_View
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
