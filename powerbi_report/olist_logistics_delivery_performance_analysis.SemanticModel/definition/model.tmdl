@@ -1,0 +1,26 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["dim_customers","fct_orders_items","_measures","dim_sellers","dim_payments","dim_products"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_customers
+ref table fct_orders_items
+ref table DateTableTemplate_82cd2350-13fc-4121-9ed4-ada7bdd15605
+ref table LocalDateTable_53310962-a5b2-4561-9a55-cd4cd71dc285
+ref table LocalDateTable_b0611741-a159-4415-8d7b-266d6668169b
+ref table _measures
+ref table dim_sellers
+ref table dim_payments
+ref table dim_products
+
+ref cultureInfo en-IN
+

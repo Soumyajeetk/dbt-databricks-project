@@ -1,0 +1,221 @@
+table fct_orders_items
+	lineageTag: f7560576-617d-4d5b-8cdc-347a8bfdba05
+
+	column order_item_key
+		dataType: string
+		lineageTag: 179e17b9-9bc8-4259-b545-cb334863c9f0
+		summarizeBy: none
+		sourceColumn: order_item_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 1a2c7e23-9410-45aa-a911-c1ff41e080c3
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sequence_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 7039c5c9-d5ef-41fb-9ede-a8c0313ac0e2
+		summarizeBy: sum
+		sourceColumn: item_sequence_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 16ca0749-4f72-4daa-9e40-cbfecbc9fac2
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: ec07c305-ab00-447f-bdcc-fe61b279959b
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 232d7a33-ea3a-4f8b-b51e-dd32473d5d97
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		lineageTag: aa385233-a2b5-4cbb-8568-d22e59230c96
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchased_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fba4a731-f892-478d-b85b-c6ad97a3db98
+		summarizeBy: none
+		sourceColumn: purchased_at
+
+		variation Variation
+			isDefault
+			relationship: 0961e516-d2a4-493d-a6a5-19e75a5d03f1
+			defaultHierarchy: LocalDateTable_53310962-a5b2-4561-9a55-cd4cd71dc285.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_limit_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 31175083-eb28-45da-a0f2-aa811778ec64
+		summarizeBy: none
+		sourceColumn: shipping_limit_at
+
+		variation Variation
+			isDefault
+			relationship: a60b4cfa-0844-4ba6-8c64-3f78105aa948
+			defaultHierarchy: LocalDateTable_b0611741-a159-4415-8d7b-266d6668169b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_price
+		dataType: double
+		lineageTag: aaad32ec-44cf-4115-9e2f-6a46a1177c80
+		summarizeBy: sum
+		sourceColumn: item_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column freight_value
+		dataType: double
+		lineageTag: 627d376e-389b-4e20-a6e7-18fe408e71f7
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_item_cost
+		dataType: double
+		lineageTag: 6df66a6c-dba0-4e12-a35b-8c58398f1e77
+		summarizeBy: sum
+		sourceColumn: total_item_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approval_delay_hours
+		dataType: int64
+		formatString: 0
+		lineageTag: 0314dc20-57a9-4137-8fea-7a95cb5e78e8
+		summarizeBy: sum
+		sourceColumn: approval_delay_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column dispatch_delay_days
+		dataType: int64
+		formatString: 0
+		lineageTag: b96ed9a5-33b8-4694-af71-b0e46bbaf892
+		summarizeBy: sum
+		sourceColumn: dispatch_delay_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_time_days
+		dataType: int64
+		formatString: 0
+		lineageTag: ce588adb-3137-4e82-8ab2-f4a34e865e2d
+		summarizeBy: sum
+		sourceColumn: delivery_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_accuracy_flag
+		dataType: int64
+		formatString: 0
+		lineageTag: c1494df9-4246-4c79-8351-b8d8c79731df
+		summarizeBy: sum
+		sourceColumn: delivery_accuracy_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_order_sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b5728aa-1b18-4dcb-838c-18bcc415aa76
+		summarizeBy: sum
+		sourceColumn: customer_order_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column prior_lifetime_cancellations
+		dataType: int64
+		formatString: 0
+		lineageTag: 307a6415-3099-4df0-b159-0d1e59db2b59
+		summarizeBy: sum
+		sourceColumn: prior_lifetime_cancellations
+
+		annotation SummarizationSetBy = Automatic
+
+	column prior_lifetime_late_deliveries
+		dataType: int64
+		formatString: 0
+		lineageTag: abe78598-70de-468d-88b4-d6b811f04b71
+		summarizeBy: sum
+		sourceColumn: prior_lifetime_late_deliveries
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_canceled
+		dataType: int64
+		formatString: 0
+		lineageTag: 72eab6e8-9fd4-4d45-b299-8f0660bddbd1
+		summarizeBy: sum
+		sourceColumn: is_canceled
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_delivered
+		dataType: int64
+		formatString: 0
+		lineageTag: 44f5d73e-e747-42a5-9310-b800801300ed
+		summarizeBy: sum
+		sourceColumn: is_delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_pending
+		dataType: int64
+		formatString: 0
+		lineageTag: e7b22e32-45cc-4229-a717-70b50facba52
+		summarizeBy: sum
+		sourceColumn: is_pending
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_orders_items = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-c79abe70-2381.cloud.databricks.com", "/sql/1.0/warehouses/81a6a78ee4298ebc", [Catalog="workspace", Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    workspace_Database = Source{[Name="workspace",Kind="Database"]}[Data],
+				    dbt_skundu_Schema = workspace_Database{[Name="dbt_skundu",Kind="Schema"]}[Data],
+				    fct_orders_items_View = dbt_skundu_Schema{[Name="fct_orders_items",Kind="View"]}[Data]
+				in
+				    fct_orders_items_View
+
+	annotation PBI_ResultType = Table
+

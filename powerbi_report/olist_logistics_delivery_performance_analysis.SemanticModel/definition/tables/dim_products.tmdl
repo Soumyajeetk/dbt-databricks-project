@@ -1,0 +1,32 @@
+table dim_products
+	lineageTag: 06215134-cbc4-442d-8223-0acbc3e3c398
+
+	column product_id
+		dataType: string
+		lineageTag: 67a23d58-9599-4bdd-8272-f511f112e02b
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: 588f4df5-ebbf-4f18-93a1-cd32e053b60d
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_products = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-c79abe70-2381.cloud.databricks.com", "/sql/1.0/warehouses/81a6a78ee4298ebc", null),
+				    workspace_Database = Source{[Name="workspace",Kind="Database"]}[Data],
+				    dbt_skundu_Schema = workspace_Database{[Name="dbt_skundu",Kind="Schema"]}[Data],
+				    dim_products_View = dbt_skundu_Schema{[Name="dim_products",Kind="View"]}[Data]
+				in
+				    dim_products_View
+
+	annotation PBI_ResultType = Table
+
