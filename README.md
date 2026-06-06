@@ -55,6 +55,31 @@ The semantic layer is engineered with clean separation of concerns, enforcing un
 * **State-Protected Glossary Pop-Up Overlays:** Formatted custom information modals using a combination of the **Selection Pane** and **Action-driven Bookmarks**. Crucially, the underlying bookmarks are configured to explicitly ignore the *Data State*—ensuring that stakeholders can pop open structural terminology panels without clearing out active slicers, time parameters, or regional filters.
 
 ---
+
+## 🖼️ Dashboard Interface Showcase
+*Click the headers below to expand and view the high-resolution operational dashboards.*
+
+<details>
+<summary><b>📐 Page 1: Cancellation Diagnostics (Standard View)</b></summary>
+<br>
+<img src="images/olist_page1_logistics.png" width="100%" alt="Cancellation Diagnostics Dashboard">
+</details>
+
+<details>
+<summary><b>💡 Page 1: Cancellation Diagnostics (With Active Glossary Pop-Up)</b></summary>
+<br>
+<img src="images/olist_page1_glossary.png" width="100%" alt="Cancellation Diagnostics with Info Modal">
+<p><i>Note: Custom modal state-protected via bookmarking to ensure filter continuity.</i></p>
+</details>
+
+<details>
+<summary><b>🚚 Page 2: Fulfillment & Logistics Performance</b></summary>
+<br>
+<img src="images/olist_page2_cancellation.png" width="100%" alt="Logistics Performance Dashboard">
+</details>
+
+---
+
 ### 📄 Page 1: Fulfillment & Logistics Performance
 * **Core Focus:** Evaluating supply chain throughput, carrier transit speed, and geographical freight logjams.
 * **KPI Trackers:**
