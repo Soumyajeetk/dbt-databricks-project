@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fct_order_items
+  - name: fct_orders_items
     description: "The primary fact table for logistics tracking. One row per item per order."
     columns:
       - name: order_item_key
@@ -18,3 +18,11 @@ models:
               arguments:
                 to: ref('dim_customers')
                 field: customer_unique_id
+
+      - name: order_status
+        description: "The current operational status of the order."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+               values: ['delivered', 'canceled', 'shipped', 'processing', 'invoiced', 'approved', 'unavailable', 'created']
