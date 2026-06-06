@@ -1,0 +1,126 @@
+table _measures
+	lineageTag: 7adc5b5c-402d-42c4-929f-b8509d968c5b
+
+	measure 'Delivery SLA Compliance %' =
+			
+			AVERAGE(fct_orders_items[delivery_accuracy_flag])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 912b512f-48aa-4b0f-932e-8bb0ce26161f
+
+	measure 'Avg Dispatch Speed' =
+			
+			AVERAGE(fct_orders_items[dispatch_delay_days])
+		formatString: 0.0" Days"
+		lineageTag: ef038dba-28a0-44a7-8a93-45da8567f63e
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Order Cancellation Rate %' =
+			
+			DIVIDE(
+			    CALCULATE(DISTINCTCOUNT(fct_orders_items[order_id]), fct_orders_items[is_canceled] = 1),
+			    DISTINCTCOUNT(fct_orders_items[order_id]),
+			    0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 492b6b92-5cd5-4d66-8bf4-9e8878fbdeee
+
+	measure 'Orders in Pipeline' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(fct_orders_items[order_id]),
+			    fct_orders_items[is_pending] = 1
+			)
+		formatString: 0
+		lineageTag: b7cf3155-84f2-4a0c-9976-03d5309efadc
+
+	measure 'Avg Transit Time' = AVERAGE(fct_orders_items[delivery_time_days])
+		formatString: 0.0 " Days"
+		lineageTag: 77fa00ca-c121-4d89-bd61-e60be8402dee
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Freight Ratio %' = DIVIDE(SUM(fct_orders_items[freight_value]), SUM(fct_orders_items[item_price]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 99a3636c-2254-4cb8-87cd-182d0324a153
+
+	measure 'Cancelled Orders' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(fct_orders_items[order_id]), 
+			    fct_orders_items[is_canceled] = 1
+			)
+			```
+		formatString: 0
+		lineageTag: e1a479c6-5f11-4ced-b763-70cc36a264d6
+
+	measure 'Lost Revenue' = ```
+			
+			CALCULATE(
+			    SUM(fct_orders_items[total_item_cost]), 
+			    fct_orders_items[is_canceled] = 1
+			)
+			```
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		lineageTag: d887b223-46cc-4f62-a061-eecaf090a0eb
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-BR"}
+
+	measure 'Avg Freight on Cancellations' = ```
+			
+			CALCULATE(
+			    AVERAGE(fct_orders_items[freight_value]), 
+			    fct_orders_items[is_canceled] = 1
+			)
+			```
+		formatString: "R$"#,0.00;-"R$"#,0.00;"R$"#,0.00
+		lineageTag: 3fe487bf-7b69-4283-9add-5e9e72f365f8
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-BR"}
+
+	measure 'Avg Approval Delay (Hours)' = ```
+			
+			CALCULATE(
+			    AVERAGE(fct_orders_items[approval_delay_hours]), 
+			    fct_orders_items[is_canceled] = 1
+			)
+			```
+		formatString: 0.0
+		lineageTag: 7080b79b-2ccb-4928-af8a-4defbf877dc4
+
+	measure 'Boleto Drop-off Rate %' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT(fct_orders_items[order_id]), 
+			        fct_orders_items[is_canceled] = 1,
+			        dim_payments[payment_type] = "boleto" 
+			    ),
+			    [Cancelled Orders],
+			    0
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: ca97d3d3-f2d7-434d-9023-921212122fe3
+
+	column Column1
+		dataType: string
+		lineageTag: ffcd06e6-fe9c-4ddc-9507-898ecd3ddabb
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

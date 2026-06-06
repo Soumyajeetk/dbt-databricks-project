@@ -1,0 +1,392 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Hide info pop up",
+  "name": "447088180b2533e335cb",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "f79652dfb0c3ce3d8704",
+    "sections": {
+      "f79652dfb0c3ce3d8704": {
+        "visualContainers": {
+          "353544cfe6bb2a7b2025": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "7f62e90a9157059764b8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "bebf0b0109042285e50b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Dispatch Speed"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2ce6d16c40b8004ed530",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Delivery SLA Compliance %"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f39110d4468ee7189b3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Order Cancellation Rate %"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8329978023d34824a8dd",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Orders in Pipeline"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0846830bca6589570bc2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Transit Time"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "cardVisual",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Delivery SLA Compliance %"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "979ee6d0098ca90dc8cb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8d4206eea9a44a34b2d5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Delivery SLA Compliance %"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ca1cea555ea1e0e22d05",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Order Cancellation Rate %"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e4191cdb6a8c90ba5971",
+                  "type": "Advanced",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "fct_orders_items"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "purchased_at"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dabd0d3d6807078a88db",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "fct_orders_items"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "purchased_at"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Month"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "fct_orders_items"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "purchased_at"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Year"
+                    }
+                  },
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "fct_orders_items"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "purchased_at"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Month"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "0374e4307668862723a5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3bac8c91d43a990e1646",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_sellers"
+                        }
+                      },
+                      "Property": "seller_state"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e1da9b63001306a913ce",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Dispatch Speed"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "50fa2ab14001eb82a0db",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Transit Time"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "36ff5c7b954a8070662c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Freight Ratio %"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "barChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_measures"
+                        }
+                      },
+                      "Property": "Avg Dispatch Speed"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_sellers"
+                        }
+                      },
+                      "Property": "seller_state"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "b68106170c9a11e4e467": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "80e140c0d101dc858e71": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "ab2d63e8ba3c8e155819": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "9916760fd1e0de6b2c63": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "553c201250ea60b92812": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "olist_logistics_delivery_performance_analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1629df0e-2763-4edd-9ca7-0062f6c2767d"
+  }
+}

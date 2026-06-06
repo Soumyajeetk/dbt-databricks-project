@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "553c201250ea60b92812",
+  "position": {
+    "x": 134.0952380952381,
+    "y": 138.15873015873015,
+    "z": 5000,
+    "height": 542.47619047619048,
+    "width": 1011.8095238095239,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Info page popup",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "isHidden": true
+}
